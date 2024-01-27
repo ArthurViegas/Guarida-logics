@@ -8,11 +8,13 @@ const rl = readline.createInterface({
 });
 
 rl.question('Insira a primeira string: ', (str1) => {
-    rl.question('Insira a segunda string: ', (str2) => {        
+    rl.question('Insira a segunda string: ', (str2) => {     
+        let result = false; // retorno false por default.
+        // remove espaços e torna a string em lowerCase.   
         str1 = str1.replace(/ /g, '').toLowerCase();
         str2 = str2.replace(/ /g, '').toLowerCase();
-        let result = false;
 
+        // valida se as strings possuem valor e se sao de mesmo tamanho, caso não sejam, retorna false.
         if((str1.length === str2.length) && (str1.length > 0 && str2.length > 0)) result = checkForAnagram(str1, str2);
         
         console.log(result);
@@ -21,6 +23,7 @@ rl.question('Insira a primeira string: ', (str1) => {
 });
 
 function checkForAnagram(string1, string2) {
+    // splita as strings e as ordenam, após isso verifica se as strings ordenadas sao iguais, um anagrama.
     const sort1 = string1.split('').sort().join('');
     const sort2 = string2.split('').sort().join('');
 
